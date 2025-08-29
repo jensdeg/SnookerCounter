@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll(".Ball-button");
-    
+
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         const scoreElement = button.closest(".Score-window").querySelector(".Score");
