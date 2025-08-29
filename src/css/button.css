@@ -1,0 +1,50 @@
+.Buttons{
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.Ball-button{
+    border:none;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: large;
+
+}
+.Ball-button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.Red{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #e74a49 3%, red 60%, #7c170f 100%)
+}
+.Yellow{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #f9f4b1 3%, yellow 60%, #b2a22e 100%)
+}
+.Green{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #a8e6a3 3%, green 60%, #176b1f 100%)
+}
+.Brown{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #d2a679 3%, brown 60%, #2e1d0f 100%)
+}
+.Blue{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #a3c8e6 3%, blue 60%, #173f6b 100%)
+}
+.Pink{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #eeb0da 3%, pink 60%, #6a235d 100%)
+}
+.Black{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #8e8484 3%, black 60%, #1f1f1f 100%)
+}

@@ -1,0 +1,27 @@
+body{
+    background-color: grey;
+    zoom: 1.2;
+}
+
+.Score-window{
+    background-color: white;
+    padding: 10px;
+    margin: 10ch;
+}
+
+.Score{
+    /* background-color: red; */
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: xx-large;
+
+    margin: 1%;
+}
+
+.Name{
+    text-align: center;
+    margin: 1%;
+}
