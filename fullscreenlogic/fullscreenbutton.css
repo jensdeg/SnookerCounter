@@ -1,0 +1,29 @@
+/* source: https://henryegloff.com/fullscreen-button */
+body::backdrop {
+     background: grey;
+}
+#fullscreen-button {
+    position: absolute;
+    top:  10px;
+    right:  10px;
+    background:  rgba(255, 255, 255, 0.2);
+    border:  0;
+    width:  50px;
+    height:  50px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition:  transform .3s;
+    cursor:  pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#fullscreen-button svg:nth-child(2) { 
+    display: none;
+}
+[fullscreen] #fullscreen-button svg:nth-child(1) {
+    display: none;
+}
+[fullscreen] #fullscreen-button svg:nth-child(2) {
+    display: inline-block;
+}

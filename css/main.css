@@ -1,5 +1,6 @@
 body{
     background-color: grey;
+    color: grey;
     zoom: 1.2;
     font-family: 'inter', sans-serif;
 }
@@ -27,6 +28,5 @@ body{
     margin-left: 20%;
     margin-right: 20%;
     font-size: xxx-large;
-
     margin: 1%;
 }
