@@ -6,6 +6,7 @@
     gap: 10px;
 }
 
+
 .Ball-button{
     border:none;
     border-radius: 50%;
@@ -19,6 +20,7 @@
     justify-content: center;
     align-items: center;
     z-index: 0;
+    user-select: none;
 }
 .Ball-button::before{
     content: "";
@@ -33,10 +35,10 @@
     z-index: -1;
     opacity: 0.75;
 }
-.Ball-button.active{
+.Ball-button.active, .clear-button.active{
     transform: translateY(4px);
 }
-.Ball-button:hover{
+.Ball-button:hover, .clear-button:hover{
     cursor: pointer;
 }
 
@@ -68,3 +70,25 @@
     background: radial-gradient(circle at 65% 15%,
      white 1px,  #8e8484 3%, black 60%, #1f1f1f 100%)
 }
+.Grey{
+    background: radial-gradient(circle at 65% 15%,
+     white 1px,  #b0b0b0 3%, grey 60%, #3f3f3f 100%)
+}
+
+.Reset-buttons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.clear-button{
+    border-radius: 10px;
+    width: 75px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

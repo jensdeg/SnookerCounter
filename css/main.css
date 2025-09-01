@@ -3,6 +3,18 @@ body{
     zoom: 1.2;
     font-family: 'inter', sans-serif;
 }
+.Name{
+    text-align: center;
+    margin: 1%;
+    border: gray 2px solid;
+    background-color: lightgray;
+    font-size: x-large;
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 .Score-window{
     background-color: lightgrey;
     padding: 10px;
@@ -17,16 +29,4 @@ body{
     font-size: xxx-large;
 
     margin: 1%;
-}
-.Name{
-    text-align: center;
-    margin: 1%;
-    border: gray 2px solid;
-    background-color: lightgray;
-    font-size: x-large;
-    width: 75%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
 }
