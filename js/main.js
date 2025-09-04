@@ -49,7 +49,7 @@ buttons.forEach(button => {
         button.classList.add("active");
     });
     button.addEventListener("touchend", (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         button.classList.remove("active");
         updateScore(button);
     });
