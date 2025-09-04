@@ -34,8 +34,8 @@ buttons.forEach(button => {
         button.classList.add("active");
     });
     button.addEventListener("mouseup", () => {
-        updateScore(button);
         button.classList.remove("active");
+        updateScore(button);
     });
     button.addEventListener("mouseleave", () => {
         button.classList.remove("active");
@@ -48,9 +48,10 @@ buttons.forEach(button => {
     button.addEventListener("touchstart", () => {
         button.classList.add("active");
     });
-    button.addEventListener("touchend", () => {
-        updateScore(button);
+    button.addEventListener("touchend", (e) => {
+        //e.preventDefault();
         button.classList.remove("active");
+        updateScore(button);
     });
     button.addEventListener("touchcancel", () => {
         button.classList.remove("active");
