@@ -1,60 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Snooker Score Counter</title>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/button.css">
-        <link rel="stylesheet" href="fullscreenlogic/fullscreenbutton.css">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <button id="fullscreen-button">
-	            <svg viewBox="0 0 24 24">
-                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
-                </svg>
-                <svg viewBox="0 0 24 24">
-                    <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
-                </svg>
-	        </button>
-        <div class="Score-window">
-            <input class="Name" placeholder="Player 1" value="" id="Player1">
-            <p class="Score" id="Player1Score">0</p>
-                <div class="Buttons">
-                    <button class="Ball-button Red">1</button>
-                    <button class="Ball-button Yellow">2</button>
-                    <button class="Ball-button Green">3</button>
-                    <button class="Ball-button Brown">4</button>
-                    <button class="Ball-button Blue">5</button>
-                    <button class="Ball-button Pink">6</button>
-                    <button class="Ball-button Black">7</button>
-                </div>
-                <div class="Reset-buttons">
-                    <button class="clear-button">-1</button>
-                    <button class="clear-button">Reset</button>
-                </div>
-            </div>
-        </div>
-        <div class="Score-window">
-            <input class="Name" placeholder="Player 2" value="" id="Player2">
-            <p class="Score" id="Player2Score">0</p>
-                <div class="Buttons">
-                    <button class="Ball-button Red">1</button>
-                    <button class="Ball-button Yellow">2</button>
-                    <button class="Ball-button Green">3</button>
-                    <button class="Ball-button Brown">4</button>
-                    <button class="Ball-button Blue">5</button>
-                    <button class="Ball-button Pink">6</button>
-                    <button class="Ball-button Black">7</button>
-                </div>
-                <div class="Reset-buttons">
-                    <button class="clear-button">-1</button>
-                    <button class="clear-button">Reset</button>
-                </div>
-            </div>
-        </div>
-        <script src="js/main.js" ></script>
-        <script src="fullscreenlogic/fullscreenbutton.js" ></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snooker Score Counter</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/button.css">
+  <link rel="stylesheet" href="css/wins.css">
+  <link rel="stylesheet" href="fullscreenlogic/fullscreenbutton.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Tabs -->
+  <nav class="tab">
+    <button class="tablinks" data-tab="main">Snooker</button>
+    <button class="tablinks" data-tab="wins">Wins</button>
+  </nav>
+
+  <button id="fullscreen-button" aria-label="Toggle Fullscreen">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
+      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
+      </svg>
+    </button>
+  <!-- Main Scoreboard -->
+  <main id="Counter">
+    <!-- Fullscreen Button -->
+    
+
+    <!-- Player 1 Score Window -->
+    <section class="score-window">
+      <input type="text" class="name" placeholder="Player 1" id="Player1">
+      <p class="score" id="Player1Score">0</p>
+
+      <div class="buttons">
+        <button class="ball-button red">1</button>
+        <button class="ball-button yellow">2</button>
+        <button class="ball-button green">3</button>
+        <button class="ball-button brown">4</button>
+        <button class="ball-button blue">5</button>
+        <button class="ball-button pink">6</button>
+        <button class="ball-button black">7</button>
+      </div>
+
+      <div class="reset-buttons">
+        <button class="clear-button">-1</button>
+        <button class="clear-button">Reset</button>
+      </div>
+    </section>
+
+    <!-- Player 2 Score Window -->
+    <section class="score-window">
+      <input type="text" class="name" placeholder="Player 2" id="Player2">
+      <p class="score" id="Player2Score">0</p>
+
+      <div class="buttons">
+        <button class="ball-button red">1</button>
+        <button class="ball-button yellow">2</button>
+        <button class="ball-button green">3</button>
+        <button class="ball-button brown">4</button>
+        <button class="ball-button blue">5</button>
+        <button class="ball-button pink">6</button>
+        <button class="ball-button black">7</button>
+      </div>
+
+      <div class="reset-buttons">
+        <button class="clear-button">-1</button>
+        <button class="clear-button">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Wins Tab -->
+  <section id="Wins">
+    <!--8 Ball-->
+    <div class="game">
+      <h1 class="game-title">8 Ball</h1>
+      <hr>
+      <div class="win-container">
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player1">0</div>
+        <button class="win-button" value="-1">&#8722;</button>
+          <div class="divider">-</div>
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player2">1</div>
+        <button class="win-button" value="-1">&#8722;</button>
+      </div>
+    </div>
+
+    <!--9 Ball-->
+    <div class="game">
+      <h1 class="game-title">9 Ball</h1>
+      <hr>
+      <div class="win-container">
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player1">0</div>
+        <button class="win-button" value="-1">&#8722;</button>
+          <div class="divider">-</div>
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player2">1</div>
+        <button class="win-button" value="-1">&#8722;</button>
+      </div>
+    </div>
+
+    <!--Snooker-->
+    <div class="game">
+      <h1 class="game-title">Snooker</h1>
+      <hr>
+      <div class="win-container">
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player1">0</div>
+        <button class="win-button" value="-1">&#8722;</button>
+          <div class="divider">-</div>
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player2">1</div>
+        <button class="win-button" value="-1">&#8722;</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/wins.js"></script>
+  <script src="fullscreenlogic/fullscreenbutton.js"></script>
+</body>
 </html>

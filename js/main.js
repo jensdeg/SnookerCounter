@@ -1,7 +1,7 @@
-const buttons = document.querySelectorAll(".Ball-button, .clear-button");
+const buttons = document.querySelectorAll(".ball-button, .clear-button");
 
 function updateScore(button) {
-    const scoreElement = button.closest(".Score-window").querySelector(".Score");
+    const scoreElement = button.closest(".score-window").querySelector(".score");
     const currentScore = parseInt(scoreElement.textContent);
     if(button.textContent === "Reset") {
         scoreElement.textContent = "0";
@@ -18,8 +18,8 @@ function updateScore(button) {
 }
 
 // score saving
-let player1Score = parseInt(localStorage.getItem("player1Score")) || 0;
-let player2Score = parseInt(localStorage.getItem("player2Score")) || 0;
+let player1Score = parseInt(localStorage.getItem("player1score")) || 0;
+let player2Score = parseInt(localStorage.getItem("player2score")) || 0;
 
 document.getElementById("Player1Score").textContent = player1Score;
 document.getElementById("Player2Score").textContent = player2Score;
