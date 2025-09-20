@@ -9,6 +9,7 @@
     border-radius: 10px;
     border: 2px solid darkgray;
     zoom:1.1;
+    margin-top: 5px;
 }
 
 .game-title{
@@ -34,4 +35,23 @@
 .win-count{
     width: 5%;
     font-weight: 300;
+    text-align: center;
+}
+
+.player-names{
+    background-color: rgb(120, 118, 118);
+    padding: 5px;
+    padding-top: 4px;
+    margin: 5ch;
+    width: 50%;
+    justify-self: center;
+    justify-items: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+td {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 1000;
 }

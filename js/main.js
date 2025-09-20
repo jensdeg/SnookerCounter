@@ -65,11 +65,16 @@ let player2Name = localStorage.getItem("player2Name") || "";
 document.getElementById("Player1").value = player1Name;     
 document.getElementById("Player2").value = player2Name;
 
+document.getElementById("player1-name").textContent = player1Name || "Player 1";
+document.getElementById("player2-name").textContent = player2Name || "Player 2";
+
 document.getElementById("Player1").addEventListener("input", (event) => {
     player1Name = event.target.value;
     localStorage.setItem("player1Name", player1Name);
+    document.getElementById("player1-name").textContent = player1Name || "Player 1";
 });
 document.getElementById("Player2").addEventListener("input", (event) => {
     player2Name = event.target.value;
     localStorage.setItem("player2Name", player2Name);
+    document.getElementById("player2-name").textContent = player2Name || "Player 2";
 });

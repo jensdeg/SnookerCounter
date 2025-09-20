@@ -13,12 +13,13 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-
 }
 .score-window{
     background-color: lightgrey;
     padding: 10px;
     margin: 5ch;
+    border-radius: 10px;
+    border: 2px solid darkgray;
 }
 .score{
     justify-content: center;
