@@ -1,8 +1,30 @@
 const winbuttons = document.querySelectorAll(".win-button");
 
+let player1 = document.getElementById("player1-name");
+let player2 = document.getElementById("player2-name");
 
+const StartingPlayer = Math.round(Math.random());
+const red = "rgb(160, 10, 10)";
+
+if(StartingPlayer === 0) {
+    player1.style.color = "rgb(160, 10, 10)";
+    player2.style.color = "black";
+} else {
+    player1.style.color = "black";
+    player2.style.color = "rgb(160, 10, 10)";
+}
+
+function TogglePlayerColor() {
+    console.log(Math.round(Math.random()));
+    if(player1.style.color === red) {
+        player1.style.color = "black";
+        player2.style.color = red;
+    } else {
+        player1.style.color = red;
+        player2.style.color = "black";
+    }
+}
 function updateWins(button) {
-    let container = button.closest(".win-container");
     let winsElement;
     if (button.nextElementSibling?.classList.contains("win-count")) {
         winsElement = button.nextElementSibling;
@@ -20,9 +42,12 @@ function updateWins(button) {
     let game = button.closest(".game").querySelector(".game-title").textContent;
     SaveScore(game, winsElement.id, newWins);
     winsElement.textContent = newWins;
+
+    if(game != "Billiard" && (newWins > 0 || currentWins != 0)) {
+        TogglePlayerColor(); 
+    }
 }
 function GetScores(button){
-    let container = button.closest(".win-container");
     let winsElement;
     if (button.nextElementSibling?.classList.contains("win-count")) {
         winsElement = button.nextElementSibling;
