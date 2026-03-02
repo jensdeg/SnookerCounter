@@ -17,5 +17,5 @@ function openTab(evt, tabbutton) {
 tabbuttons.forEach(tabbutton => {
     tabbutton.addEventListener("click", (e) => {
         openTab(e, tabbutton);
-    })
+    });
 });

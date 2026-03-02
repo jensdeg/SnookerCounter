@@ -81,7 +81,7 @@
     flex-wrap: wrap;
     gap: 10px;
 }
-.clear-button{
+.clear-button, .reset-button{
     border-radius: 10px;
     width: 75px;
     height: 30px;

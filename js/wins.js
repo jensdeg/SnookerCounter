@@ -3,27 +3,43 @@ const winbuttons = document.querySelectorAll(".win-button");
 let player1 = document.getElementById("player1-name");
 let player2 = document.getElementById("player2-name");
 
-const StartingPlayer = Math.round(Math.random());
 const red = "rgb(160, 10, 10)";
 
-if(StartingPlayer === 0) {
-    player1.style.color = "rgb(160, 10, 10)";
-    player2.style.color = "black";
-} else {
-    player1.style.color = "black";
-    player2.style.color = "rgb(160, 10, 10)";
+let StartingPlayer = localStorage.getItem("startingPlayer") || null;
+
+if(StartingPlayer == null) {
+    RandomizeStartingPlayer();
+}
+else{
+    SetStartingPlayer(StartingPlayer);
 }
 
-function TogglePlayerColor() {
-    console.log(Math.round(Math.random()));
-    if(player1.style.color === red) {
-        player1.style.color = "black";
-        player2.style.color = red;
-    } else {
+function SetStartingPlayer(StartingPlayer) {
+    if(StartingPlayer === '1') {
         player1.style.color = red;
         player2.style.color = "black";
+    } else if (StartingPlayer === '2') {
+        player1.style.color = "black";
+        player2.style.color = red;
+    }
+    localStorage.setItem("startingPlayer", StartingPlayer);
+}
+
+function RandomizeStartingPlayer() {
+    let randomPlayer = Math.round(Math.random()) + 1;
+    SetStartingPlayer(randomPlayer.toString());
+}
+
+
+function ToggleStartingPlayer() {
+    let startingPlayer = localStorage.getItem("startingPlayer");
+    if (startingPlayer == '1') {
+        SetStartingPlayer('2');
+    } else if (startingPlayer == '2') {    
+        SetStartingPlayer('1');
     }
 }
+
 function updateWins(button) {
     let winsElement;
     if (button.nextElementSibling?.classList.contains("win-count")) {
@@ -44,7 +60,7 @@ function updateWins(button) {
     winsElement.textContent = newWins;
 
     if(game != "Billiard" && (newWins > 0 || currentWins != 0)) {
-        TogglePlayerColor(); 
+        ToggleStartingPlayer(); 
     }
 }
 function GetScores(button){
@@ -67,9 +83,6 @@ function SaveScore(game, player, wins){
     let key = game + player + "Wins";
     localStorage.setItem(key, wins);
 }
-
-
-
 
 winbuttons.forEach(button => {
     GetScores(button);
@@ -99,4 +112,10 @@ winbuttons.forEach(button => {
     button.addEventListener("touchcancel", () => {
         button.classList.remove("active");
     });
+});
+
+document.getElementById("reset-wins").addEventListener("click", () => {
+    RandomizeStartingPlayer();
+    let wins = document.querySelectorAll(".win-count");
+    wins.forEach(w => w.textContent = 0);
 });
