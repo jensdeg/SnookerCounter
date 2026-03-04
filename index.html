@@ -17,6 +17,7 @@
   <nav class="tab">
     <button class="tablinks" data-tab="main">Snooker</button>
     <button class="tablinks" data-tab="wins">Wins</button>
+    <button class="tablinks" data-tab="log">Log</button>
   </nav>
 
   <button id="fullscreen-button" aria-label="Toggle Fullscreen">
@@ -133,13 +134,22 @@
         <button class="win-button" value="-1">&#8722;</button>
       </div>
     </div>
-    <button id="reset-wins" class="reset-button" style="justify-self: center; top: -2ch;">Reset</button>
+    <div style="display: flex; justify-content: center; gap: 1ch; margin-top: -1.5ch;">
+      <button id="reset-wins" class="reset-button" style="justify-self: center;">Reset</button>
+      <button id="log-wins" class="reset-button" style="justify-self: center;">Log</button>
+    </div>
+  </section>
+
+  <section id="Log">
+    <h1>Match Log</h1>
   </section>
 
   <!-- Scripts -->
   <script src="js/snooker.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/wins.js"></script>
+  <script src="js/persistence/Match.js"></script>
+  <script src="js/persistence/db.js"></script>
   <script src="fullscreenlogic/fullscreenbutton.js"></script>
 </body>
 </html>

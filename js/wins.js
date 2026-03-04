@@ -7,6 +7,8 @@ const red = "rgb(160, 10, 10)";
 
 let StartingPlayer = localStorage.getItem("startingPlayer") || null;
 
+const Games = ["8 Ball", "9 Ball", "Billiard"];
+
 if(StartingPlayer == null) {
     RandomizeStartingPlayer();
 }
@@ -34,7 +36,7 @@ function RandomizeStartingPlayer() {
 function ToggleStartingPlayer() {
     let startingPlayer = localStorage.getItem("startingPlayer");
     if (startingPlayer == '1') {
-        SetStartingPlayer('2');
+        SetStartingPlayer('2'); 
     } else if (startingPlayer == '2') {    
         SetStartingPlayer('1');
     }
@@ -84,6 +86,16 @@ function SaveScore(game, player, wins){
     localStorage.setItem(key, wins);
 }
 
+function ResetScores(){
+    RandomizeStartingPlayer();
+    let wins = document.querySelectorAll(".win-count");
+    wins.forEach(w => w.textContent = 0);
+    Games.forEach(game => {
+        localStorage.setItem(game + "player1Wins", 0);
+        localStorage.setItem(game + "player2Wins", 0);
+    });
+}
+
 winbuttons.forEach(button => {
     GetScores(button);
     button.addEventListener("mousedown", () => {
@@ -115,7 +127,12 @@ winbuttons.forEach(button => {
 });
 
 document.getElementById("reset-wins").addEventListener("click", () => {
-    RandomizeStartingPlayer();
-    let wins = document.querySelectorAll(".win-count");
-    wins.forEach(w => w.textContent = 0);
+    ResetScores();
+});
+
+document.getElementById("log-wins").addEventListener("click", () => {
+    if(confirm("Are you sure you want to log the current scores? This will reset the scores after logging.")) {
+        SaveMatches(Games);
+        ResetScores();
+    }
 });
