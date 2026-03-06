@@ -30,3 +30,9 @@ body{
     font-size: xxx-large;
     margin: 1%;
 }
+.Log-Page{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}

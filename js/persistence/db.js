@@ -28,3 +28,82 @@ function SaveMatches(matchNames){
 function ClearDB(){
     localStorage.removeItem(MatchesKey);
 }
+
+function GetMatchups(){
+    const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+    if (matches.length === 0) {
+        return [];
+    }
+
+    const matchups = [];
+    let id = 0;
+    matches.forEach(m => {
+        const exists = matchups.some(u =>
+            (u.player1 === m.player1Name && u.player2 === m.player2Name  && u.matchName === m.name) ||
+            (u.player1 === m.player2Name && u.player2 === m.player1Name  && u.matchName === m.name)
+        );
+        if (!exists) {
+            var player1TotalScore = GetPlayerTotalScore(m.player1Name, m.player2Name, m.name, matches);
+            var player2TotalScore = GetPlayerTotalScore(m.player2Name, m.player1Name, m.name, matches);
+            matchups.push({ id: id++, player1: m.player1Name, player2: m.player2Name, player1Score: player1TotalScore, player2Score: player2TotalScore, matchName: m.name });
+        }
+    });
+
+    return matchups;
+}
+
+function GetPlayerTotalScore(player, opponent, matchname, matches){
+    let totalScore = 0;
+    matches.forEach(m => {
+        if((m.player1Name === player && m.player2Name === opponent && m.name === matchname)){
+            totalScore += m.player1Score;
+        }
+        else if (m.player1Name === opponent && m.player2Name === player && m.name === matchname) {
+            totalScore += m.player2Score;
+        }
+    });
+    return totalScore;
+}
+
+function RenderMatchups(){
+    const matchups = GetMatchups();
+    const container = document.getElementById("match-log-container");
+    let html = ``;
+    matchups.forEach(m => {
+        html += `
+            <button id="${m.id}" class="matchup-button">
+            <div style="padding: 10px;">
+            <div>
+                <span><b>${m.player1}</b></span>
+                <span>vs</span>
+                <span><b>${m.player2}</b></span>
+            </div>
+            <div>
+                <span>${m.player1Score}</span>
+                <span>-</span>
+                <span>${m.player2Score}</span>
+            </div>
+            <div>
+                <span><b>${m.matchName}</b></span>
+            </div>
+            </div>
+        </button>
+    `;
+    });
+    container.innerHTML = html;
+
+    document.querySelectorAll(".matchup-button").forEach(button => {
+        button.addEventListener("click", () => {
+            // TODO: Show detailed view of matches in this matchup
+            console.log(GetMatches(matchups.find(m => m.id == button.id)));
+        });
+    });
+}
+
+function GetMatches(matchup){
+    const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+    return matches.filter(m =>
+        (m.player1Name === matchup.player1 && m.player2Name === matchup.player2 && m.name === matchup.matchName) ||
+        (m.player1Name === matchup.player2 && m.player2Name === matchup.player1 && m.name === matchup.matchName)
+    );
+}

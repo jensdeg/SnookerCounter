@@ -16,6 +16,7 @@ function openTab(tab) {
         document.getElementById("Counter").style.display = "none";
         document.getElementById("Wins").style.display = "none";
         document.getElementById("Log").style.display = "block";
+        RenderMatchups();
     }
 }
 
