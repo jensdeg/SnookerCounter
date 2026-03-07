@@ -94,16 +94,50 @@ function RenderMatchups(){
 
     document.querySelectorAll(".matchup-button").forEach(button => {
         button.addEventListener("click", () => {
-            // TODO: Show detailed view of matches in this matchup
-            console.log(GetMatches(matchups.find(m => m.id == button.id)));
+            RenderMatches(matchups.find(m => m.id == button.id));
         });
     });
 }
 
-function GetMatches(matchup){
-    const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
-    return matches.filter(m =>
+function RenderMatches(matchup){
+    let matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+    matches = matches.filter(m =>
         (m.player1Name === matchup.player1 && m.player2Name === matchup.player2 && m.name === matchup.matchName) ||
         (m.player1Name === matchup.player2 && m.player2Name === matchup.player1 && m.name === matchup.matchName)
     );
+
+    const container = document.getElementById("match-log-container");
+    let html = `<div class="match-list">
+                    <div class="player-names">
+                        <table cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                            <td id="player1-name" style="width: 30%;">${matchup.player1}</td>
+                            <td style="width: 1%;">-</td>
+                            <td id="player2-name" style="width: 30%;">${matchup.player2}</td>
+                            </tr>
+                        </table>
+                    </div>`;
+
+    matches.forEach(m => {
+        let year = new Date(m.date).getFullYear();
+        m.date = m.date
+            .replace(/-/g, "/")
+            .replace(",", "")
+            .replace(year, year - 2000)
+            .slice(0, -3);
+
+        if(m.player1Score > m.player2Score){
+            m.player1Score = `<u><b>${m.player1Score}</b></u>`;
+        }
+        else if(m.player2Score > m.player1Score){
+            m.player2Score = `<u><b>${m.player2Score}</b></u>`;
+        }
+        html += `   
+            <div class="match-container">
+                <span>${m.date}</span><span>${m.player1Score} - ${m.player2Score}</span>
+            </div>
+        `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
 }

@@ -17,7 +17,6 @@ if (document.fullscreenEnabled) {
 }
 
 function toggle_fullscreen() {
-    console.log("toggle fullscreen");
     if (!document.fullscreenElement) {
         document.body.requestFullscreen();
         document.body.setAttribute("fullscreen",""); 

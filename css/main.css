@@ -36,3 +36,42 @@ body{
     flex-wrap: wrap;
     justify-items: center;
 }
+.match-log-container{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+.match-list{
+    width: 100%;
+}
+.match-container{
+    background-color: lightgrey;
+    padding: 2px;
+    padding-top: 2px;
+    margin: 2px;
+    width: 50%;
+    height: auto;
+    justify-self: center;
+    justify-items: center;
+    border-radius: 10px;
+    border: 2px solid darkgray;
+    zoom:1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.match-container span:first-child {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.match-container span:last-child {
+    margin-top: 5px;
+    font-size: xx-large;
+}
