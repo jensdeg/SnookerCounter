@@ -105,6 +105,7 @@ function RenderMatches(matchup){
         (m.player1Name === matchup.player1 && m.player2Name === matchup.player2 && m.name === matchup.matchName) ||
         (m.player1Name === matchup.player2 && m.player2Name === matchup.player1 && m.name === matchup.matchName)
     );
+    matches.reverse();
 
     const container = document.getElementById("match-log-container");
     let html = `<div class="match-list">
