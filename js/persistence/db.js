@@ -120,7 +120,8 @@ function RenderMatches(matchup){
                     </div>`;
 
     matches.forEach(m => {
-        let year = new Date(m.date).getFullYear();
+        let year = GetYear(m.date);
+
         m.date = m.date
             .replace(/-/g, "/")
             .replace(",", "")
@@ -141,4 +142,11 @@ function RenderMatches(matchup){
     });
     html += `</div>`;
     container.innerHTML = html;
+}
+function GetYear(dateString){
+    let year = new Date(dateString).getFullYear();
+    if(!isNaN(year)){
+        return year;
+    }
+    return parseInt(dateString.split("-")[2].split(",")[0]);
 }
