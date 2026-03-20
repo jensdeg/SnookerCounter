@@ -70,6 +70,17 @@ function RenderMatchups(){
     const container = document.getElementById("match-log-container");
     let html = ``;
     matchups.forEach(m => {
+        let totalMatches = m.player1Score + m.player2Score;
+        let player1WinRate =  ((m.player1Score / totalMatches) * 100).toFixed(0);
+        let player2WinRate = ((m.player2Score / totalMatches) * 100).toFixed(0);
+
+        if(player1WinRate > player2WinRate){
+            player1WinRate = `<u><b>${player1WinRate}</u></b>`;
+        }
+        else if(player2WinRate > player1WinRate){
+            player2WinRate = `<u><b>${player2WinRate}</u></b>`;
+        }
+
         html += `
             <button id="${m.id}" class="matchup-button">
             <div style="padding: 10px;">
@@ -79,12 +90,13 @@ function RenderMatchups(){
                 <span><b>${m.player2}</b></span>
             </div>
             <div>
-                <span>${m.player1Score}</span>
-                <span>-</span>
-                <span>${m.player2Score}</span>
+                <span>${m.matchName}</span>
             </div>
+            <hr style="margin: 5px 0;">
             <div>
-                <span><b>${m.matchName}</b></span>
+                <span style="margin-right: 10px;">${player1WinRate}%</span>
+                <span><b>-</b></span>
+                <span style="margin-left: 10px;">${player2WinRate}%</span>
             </div>
             </div>
         </button>
@@ -107,14 +119,24 @@ function RenderMatches(matchup){
     );
     matches.reverse();
 
+    if(matchup.player1Score > matchup.player2Score){
+        matchup.player1Score = `<u><b>${matchup.player1Score}</b></u>`;
+    }
+    else if(matchup.player2Score > matchup.player1Score){
+        matchup.player2Score = `<u><b>${matchup.player2Score}</b></u>`;
+    }
+
     const container = document.getElementById("match-log-container");
     let html = `<div class="match-list">
                     <div class="player-names">
-                        <table cellspacing="0" cellpadding="0" width="100%">
+                        <table cellspacing="0" cellpadding="0" width="100%" height="120%">
                             <tr>
-                            <td id="player1-name" style="width: 30%;">${matchup.player1}</td>
-                            <td style="width: 1%;">-</td>
-                            <td id="player2-name" style="width: 30%;">${matchup.player2}</td>
+                            <td id="player1-name" style="width: 30%;"><b>${matchup.player1}</b></td>
+                            <td id="player2-name" style="width: 30%;"><b>${matchup.player2}</b></td>
+                            </tr>
+                            <tr>
+                            <td id="player1-score" style="width: 30%;">${matchup.player1Score}</td>
+                            <td id="player2-score" style="width: 30%;">${matchup.player2Score}</td>
                             </tr>
                         </table>
                     </div>`;
