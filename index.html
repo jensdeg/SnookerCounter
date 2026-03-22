@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snooker Score Counter</title>
-  
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/button.css">
   <link rel="stylesheet" href="css/wins.css">
@@ -13,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navigation Tabs -->
   <nav class="tab">
     <button class="tablinks" data-tab="main">Snooker</button>
     <button class="tablinks" data-tab="wins">Wins</button>
@@ -28,12 +25,7 @@
         <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
       </svg>
     </button>
-  <!-- Main Scoreboard -->
   <main id="Counter">
-    <!-- Fullscreen Button -->
-    
-
-    <!-- Player 1 Score Window -->
     <section class="score-window">
       <input type="text" class="name" placeholder="Player 1" id="Player1">
       <p class="score" id="Player1Score">0</p>
@@ -54,7 +46,6 @@
       </div>
     </section>
 
-    <!-- Player 2 Score Window -->
     <section class="score-window">
       <input type="text" class="name" placeholder="Player 2" id="Player2">
       <p class="score" id="Player2Score">0</p>
@@ -76,10 +67,7 @@
     </section>
   </main>
 
-  <!-- Wins Tab -->
   <section id="Wins">
-    
-    <!-- Player Names -->
     <div class="player-names">
       <table cellspacing="0" cellpadding="0" width="100%">
         <tr>
@@ -90,7 +78,6 @@
       </table>
     </div>
 
-    <!--8 Ball-->
     <div class="game">
       <h1 class="game-title">8 Ball</h1>
       <hr>
@@ -105,7 +92,6 @@
       </div>
     </div>
 
-    <!--9 Ball-->
     <div class="game">
       <h1 class="game-title">9 Ball</h1>
       <hr>
@@ -120,7 +106,20 @@
       </div>
     </div>
 
-    <!--Billiard-->
+    <div class="game">
+      <h1 class="game-title">Snooker</h1>
+      <hr>
+      <div class="win-container">
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player1">0</div>
+        <button class="win-button" value="-1">&#8722;</button>
+          <div class="divider">-</div>
+        <button class="win-button" value="1">&#43;</button>
+          <div class="win-count" id="player2">1</div>
+        <button class="win-button" value="-1">&#8722;</button>
+      </div>
+    </div>
+
     <div class="game">
       <h1 class="game-title">Billiard</h1>
       <hr>
@@ -145,7 +144,6 @@
     <div id="match-log-container" class="match-log-container"></div>
   </section>
 
-  <!-- Scripts -->
   <script src="js/snooker.js"></script>
   <script src="js/wins.js"></script>
   <script src="js/persistence/Match.js"></script>

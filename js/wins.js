@@ -7,7 +7,7 @@ const red = "rgb(160, 10, 10)";
 
 let StartingPlayer = localStorage.getItem("startingPlayer") || null;
 
-const Games = ["8 Ball", "9 Ball", "Billiard"];
+const Games = ["8 Ball", "9 Ball", "Billiard", "Snooker"];
 
 if(StartingPlayer == null) {
     RandomizeStartingPlayer();

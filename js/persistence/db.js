@@ -25,10 +25,6 @@ function SaveMatches(matchNames){
     });
 }
 
-function ClearDB(){
-    localStorage.removeItem(MatchesKey);
-}
-
 function GetMatchups(){
     const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
     if (matches.length === 0) {
@@ -171,4 +167,15 @@ function GetYear(dateString){
         return year;
     }
     return parseInt(dateString.split("-")[2].split(",")[0]);
+}
+
+function SaveToFile(){
+    const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(matches));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "matches.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
 }
