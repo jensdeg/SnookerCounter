@@ -172,10 +172,16 @@ function GetYear(dateString){
 function SaveToFile(){
     const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(matches));
+    let today = new Date();
+    let fileName = `Match-Log-${today.toLocaleDateString()}-${today.getTime()}.json`
+    
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "matches.json");
+    downloadAnchorNode.setAttribute("download", fileName);
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
 }
+document.getElementById("download").addEventListener("click", () => {
+    SaveToFile();
+});
