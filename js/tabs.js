@@ -1,21 +1,20 @@
-const tabbuttons = document.querySelectorAll(".tablinks");
-openTab("Wins");
+const tabbuttons = document.querySelectorAll(".tab-button");
+const TabColor = "linear-gradient(to bottom, rgba(211, 211, 211, 0.083), rgba(255, 255, 255, 0.365))"
+const activeTabColor = "linear-gradient(to bottom, rgba(211, 211, 211, 0.083), rgba(255, 255, 255, 0.612))"
+openTab("Games");
 
 function openTab(tab) {
-    if(tab === "Snooker") {
-        document.getElementById("Counter").style.display = "block";
-        document.getElementById("Wins").style.display = "none";
-        document.getElementById("Log").style.display = "none";
-    }
-    if(tab === "Wins") {
-        document.getElementById("Counter").style.display = "none";
-        document.getElementById("Wins").style.display = "block";
-        document.getElementById("Log").style.display = "none";
-    }
-    if(tab === "Log") {
-        document.getElementById("Counter").style.display = "none";
-        document.getElementById("Wins").style.display = "none";
-        document.getElementById("Log").style.display = "block";
+    tabbuttons.forEach(tabbutton => {
+        if(tabbutton.textContent === tab) {
+            document.getElementById(tab).style.display = "block";
+            tabbutton.style.backgroundImage = activeTabColor;
+        }
+        else if (tabbutton.textContent !== tab){
+            document.getElementById(tabbutton.textContent).style.display = "none";
+            tabbutton.style.backgroundImage = TabColor;
+        }});
+
+    if(tab === "Log"){
         RenderMatchups();
     }
 }

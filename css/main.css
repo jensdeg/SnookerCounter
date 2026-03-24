@@ -2,6 +2,7 @@ body{
     background-color: grey;
     zoom: 1.2;
     font-family: 'inter', sans-serif;
+    margin-bottom: 20px;
 }
 .name{
     text-align: center;
@@ -74,4 +75,36 @@ body{
 .match-container span:last-child {
     margin-top: 5px;
     font-size: xx-large;
+}
+
+.tab{
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    margin-top: 2.5%;
+    width: 50%;
+    margin-top: 25px;
+}
+.tab-button{
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, rgba(211, 211, 211, 0.083), rgba(255, 255, 255, 0.365));
+    border-top-right-radius: 10%;
+    border-top-left-radius: 10%;
+    padding: 10px;
+    width: 150%;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: large;
+    outline: none;
+    border: none;
+    height: 50px;
+    font-size: xx-large;
+}
+.tabdivider{
+    width: 70%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.612);
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }

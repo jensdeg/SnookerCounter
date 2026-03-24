@@ -3,6 +3,9 @@ const winbuttons = document.querySelectorAll(".win-button");
 let player1 = document.getElementById("player1-name");
 let player2 = document.getElementById("player2-name");
 
+let player1Snooker = document.getElementById("Player1");
+let player2Snooker = document.getElementById("Player2");
+
 const red = "rgb(160, 10, 10)";
 
 let StartingPlayer = localStorage.getItem("startingPlayer") || null;
@@ -20,9 +23,13 @@ function SetStartingPlayer(StartingPlayer) {
     if(StartingPlayer === '1') {
         player1.style.color = red;
         player2.style.color = "black";
+        player1Snooker.style.color = "red";
+        player2Snooker.style.color = "black";
     } else if (StartingPlayer === '2') {
         player1.style.color = "black";
         player2.style.color = red;
+        player1Snooker.style.color = "black";
+        player2Snooker.style.color = "red";
     }
     localStorage.setItem("startingPlayer", StartingPlayer);
 }
