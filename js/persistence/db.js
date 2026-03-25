@@ -169,19 +169,75 @@ function GetYear(dateString){
     return parseInt(dateString.split("-")[2].split(",")[0]);
 }
 
-function SaveToFile(){
+
+async function SaveToFile(){ // Copilot function
     const matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(matches));
+    if(matches.length === 0){
+        alert('No matches to export.');
+        return;
+    }
+
+    const dataStr = JSON.stringify(matches, null, 2);
     let today = new Date();
-    let fileName = `Match-Log-${today.toLocaleDateString()}-${today.getTime()}.json`
-    
+    let fileName = `Match-Log-${today.toLocaleDateString()}-${today.getTime()}.json`;
+
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const file = new File([blob], fileName, { type: 'application/json' });
+
+    // 1) Mobile Web Share API (preferred if available)
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+            await navigator.share({
+                title: 'SnookerCounter Match Log',
+                text: 'Exported matches from SnookerCounter',
+                files: [file]
+            });
+            return;
+        } catch (err) {
+            console.debug('Web Share failed', err);
+            // continue to fallback
+        }
+    }
+
+    // 2) Native file picker (desktop modern browsers)
+    if (window.showSaveFilePicker) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: fileName,
+                types: [{
+                    description: 'JSON file',
+                    accept: { 'application/json': ['.json'] }
+                }]
+            });
+            const writable = await handle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+            return;
+        } catch (err) {
+            console.debug('File System Access API failed', err);
+            // continue to fallback
+        }
+    }
+
+    // 3) Blob link click fallback (desktop & Android WebView etc.)
+    const url = URL.createObjectURL(blob);
     const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", fileName);
+    downloadAnchorNode.href = url;
+    downloadAnchorNode.download = fileName;
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
-    downloadAnchorNode.remove();
+
+    setTimeout(() => {
+        document.body.removeChild(downloadAnchorNode);
+        URL.revokeObjectURL(url);
+    }, 100);
+
+    // 4) iOS fallback: data may open in new tab (user can share/save manually)
+    if (/iP(ad|hone|od)/.test(navigator.userAgent) && !navigator.canShare) {
+        window.open(url, '_blank');
+    }
 }
+
 document.getElementById("download").addEventListener("click", () => {
     SaveToFile();
 });

@@ -81,7 +81,7 @@
     flex-wrap: wrap;
     gap: 10px;
 }
-.clear-button, .reset-button{
+.clear-button, .reset-button, .download-button{
     border-radius: 10px;
     width: 75px;
     height: 30px;
