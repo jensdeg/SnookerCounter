@@ -241,3 +241,22 @@ async function SaveToFile(){ // Copilot function
 document.getElementById("download").addEventListener("click", () => {
     SaveToFile();
 });
+
+document.getElementById("MatchLogFile").addEventListener("change", fileEvent => {
+    ImportFile(fileEvent); 
+})
+
+async function ImportFile(fileEvent){
+    if(!confirm("are you sure you want to import this file? this will overide current data")) return;
+    const input = fileEvent.target;
+    const file = input.files[0];
+
+    if(!file || !file.name.startsWith("Match-Log")) return
+
+    let text = await file.text();
+
+    localStorage.setItem(MatchesKey, text)
+    RenderMatchups();
+
+    input.value = "";
+}

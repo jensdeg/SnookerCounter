@@ -146,14 +146,18 @@
     <section id="Log" class="Log-Page">
       <h1>Matches</h1>
       <div id="match-log-container" class="match-log-container"></div>
-      <div class="buttons"><button class="download-button" id="download">download</button></div>
+      <div class="buttons">
+        <button class="download-button" id="download">download</button>
+        <label for="MatchLogFile" class="import-button">Import</label>
+        <input type="file" id="MatchLogFile" accept=".json"></input>
+      </div>
     </section>
 
+    <script src="js/tabs.js"></script>
     <script src="js/snooker.js"></script>
     <script src="js/wins.js"></script>
     <script src="js/persistence/Match.js"></script>
     <script src="js/persistence/db.js"></script>
-    <script src="js/tabs.js"></script>
     <script src="fullscreenlogic/fullscreenbutton.js"></script>
   </body>
 </html>

@@ -21,6 +21,9 @@ body{
     margin: 5ch;
     border-radius: 10px;
     border: 2px solid darkgray;
+    width: 75%;
+    justify-self: center;
+    justify-items: center;
 }
 .score{
     justify-content: center;

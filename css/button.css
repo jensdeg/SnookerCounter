@@ -81,7 +81,7 @@
     flex-wrap: wrap;
     gap: 10px;
 }
-.clear-button, .reset-button, .download-button{
+.clear-button, .reset-button, .download-button, .import-button{
     border-radius: 10px;
     width: 75px;
     height: 30px;
@@ -109,4 +109,14 @@
     border-radius: 10px;
     margin: 10px;
     zoom: 2;
+}
+
+#MatchLogFile {
+  display: none;
+}
+
+.import-button{
+    background-color: rgb(227, 227, 227);
+    outline: 2px solid black;
+    font-size: small;
 }
