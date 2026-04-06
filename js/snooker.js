@@ -15,6 +15,7 @@ function updateScore(button) {
     }
     scoreElement.textContent = newScore;
     saveScores();
+    PlayNumberSound(pointsToAdd);
 }
 
 // score saving
