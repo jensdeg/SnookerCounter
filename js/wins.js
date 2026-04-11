@@ -10,7 +10,7 @@ const red = "rgb(160, 10, 10)";
 
 let StartingPlayer = localStorage.getItem("startingPlayer") || null;
 
-const Games = ["8 Ball", "9 Ball", "Billiard", "Snooker"];
+const Games = ["8 Ball", "9 Ball", "Snooker"];
 
 if(StartingPlayer == null) {
     RandomizeStartingPlayer();
@@ -77,7 +77,7 @@ function updateWins(button) {
     SaveScore(game, winsElement.id, newWins);
     winsElement.textContent = newWins;
 
-    if(game != "Billiard" && (newWins > 0 || currentWins != 0)) {
+    if(newWins > 0 || currentWins != 0) {
         ToggleStartingPlayer(); 
     }
 }
