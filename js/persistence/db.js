@@ -4,8 +4,10 @@ function SaveMatches(matchNames){
     if(!matchNames || matchNames.length === 0) {
         return;
     }
+    let matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+
     matchNames.forEach(name => {
-        let matches = JSON.parse(localStorage.getItem(MatchesKey)) || [];
+        
         let id = matches.length > 0 
             ? matches[matches.length - 1].id + 1 
             : 1;
@@ -21,8 +23,9 @@ function SaveMatches(matchNames){
 
         let newMatch = new Match(id, name, player1Name, player2Name, player1Score, player2Score);
         matches.push(newMatch);
-        localStorage.setItem(MatchesKey, JSON.stringify(matches));
     });
+
+    localStorage.setItem(MatchesKey, JSON.stringify(matches));
 }
 
 function GetMatchups(){

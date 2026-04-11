@@ -21,17 +21,26 @@ else{
 
 function SetStartingPlayer(StartingPlayer) {
     if(StartingPlayer === '1') {
-        player1.style.color = red;
-        player2.style.color = "black";
-        player1Snooker.style.color = "red";
-        player2Snooker.style.color = "black";
+        ActivatePlayerName(player1);
+        ActivatePlayerName(player1Snooker);
+        DeactivatePlayerName(player2);
+        DeactivatePlayerName(player2Snooker);
     } else if (StartingPlayer === '2') {
-        player1.style.color = "black";
-        player2.style.color = red;
-        player1Snooker.style.color = "black";
-        player2Snooker.style.color = "red";
+        ActivatePlayerName(player2);
+        ActivatePlayerName(player2Snooker);
+        DeactivatePlayerName(player1);
+        DeactivatePlayerName(player1Snooker);
     }
     localStorage.setItem("startingPlayer", StartingPlayer);
+}
+
+function ActivatePlayerName(player){
+    player.style.color = red;
+    player.style.textShadow = "0 0 10px white, 0 0 10px white";
+}
+function DeactivatePlayerName(player){
+    player.style.color = "black";
+    player.style.textShadow = "none";
 }
 
 function RandomizeStartingPlayer() {
@@ -134,7 +143,9 @@ winbuttons.forEach(button => {
 });
 
 document.getElementById("reset-wins").addEventListener("click", () => {
-    ResetScores();
+    if(confirm("Are you sure you want to reset the current scores?")) {
+        ResetScores();
+    }
 });
 
 document.getElementById("log-wins").addEventListener("click", () => {
