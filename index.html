@@ -70,7 +70,7 @@
       <div class="game">
         <h1 class="game-title">Snooker</h1>
         <hr>
-        <div class="win-container">
+        <div class="win-container" id="snooker-win-container">
           <button class="win-button" value="1">&#43;</button>
           <div class="win-count" id="player1">0</div>
           <button class="win-button" value="-1">&#8722;</button>
@@ -127,6 +127,9 @@
           <button class="clear-button">Reset</button>
         </div>
       </section>
+      <div style="display: flex; justify-content: center; gap: 1ch; margin-top: -1.5ch;">
+        <button id="End-Game" class="reset-button">End Game</button>
+      </div>
     </section>
 
     <section id="Log" class="Log-Page">
@@ -140,8 +143,8 @@
     </section>
     <script src="js/sounds.js"></script>
     <script src="js/tabs.js"></script>
-    <script src="js/snooker.js"></script>
     <script src="js/wins.js"></script>
+    <script src="js/snooker.js"></script>
     <script src="js/persistence/Match.js"></script>
     <script src="js/persistence/db.js"></script>
     <script src="fullscreenlogic/fullscreenbutton.js"></script>

@@ -9,7 +9,7 @@ function updateScore(button) {
         return;
     }
     const pointsToAdd = parseInt(button.textContent);
-    const newScore = currentScore + pointsToAdd;
+    let newScore = currentScore + pointsToAdd;
     if (newScore < 0) {
         newScore = 0;
     }
@@ -78,4 +78,35 @@ document.getElementById("Player2").addEventListener("input", (event) => {
     player2Name = event.target.value;
     localStorage.setItem("player2Name", player2Name);
     document.getElementById("player2-name").textContent = player2Name || "Player 2";
+});
+
+document.getElementById("End-Game").addEventListener("click", () => {
+    if(!confirm("Are you sure you want to end the game?")) return;
+
+    let player1scoreElement = document.getElementById("Player1Score");
+    let player2scoreElement = document.getElementById("Player2Score");
+
+    let player1score = parseInt(player1scoreElement.textContent);
+    let player2score = parseInt(player2scoreElement.textContent);
+
+    let player1WincountElement = document.getElementById("snooker-win-container").querySelector("#player1");
+    let player2WincountElement = document.getElementById("snooker-win-container").querySelector("#player2");
+
+    if (player1score > player2score){
+        let currentWins = parseInt(player1WincountElement.textContent);
+        SaveWins("Snooker", "player1", currentWins + 1);
+        player1WincountElement.textContent = currentWins + 1;
+    }
+    else if (player2score > player1score){
+        let currentWins = parseInt(player2WincountElement.textContent);
+        SaveWins("Snooker", "player2", currentWins + 1);
+        player2WincountElement.textContent = currentWins + 1;
+    } 
+    else{
+        return;
+    }
+
+    player1scoreElement.textContent = 0;
+    player2scoreElement.textContent = 0;
+    saveScores();
 });

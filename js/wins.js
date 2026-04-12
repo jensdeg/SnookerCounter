@@ -74,14 +74,14 @@ function updateWins(button) {
         newWins = 0;
     }
     let game = button.closest(".game").querySelector(".game-title").textContent;
-    SaveScore(game, winsElement.id, newWins);
+    SaveWins(game, winsElement.id, newWins);
     winsElement.textContent = newWins;
 
     if(newWins > 0 || currentWins != 0) {
         ToggleStartingPlayer(); 
     }
 }
-function GetScores(button){
+function GetWins(button){
     let winsElement;
     if (button.nextElementSibling?.classList.contains("win-count")) {
         winsElement = button.nextElementSibling;
@@ -97,12 +97,12 @@ function GetScores(button){
 }
 
 
-function SaveScore(game, player, wins){
+function SaveWins(game, player, wins){
     let key = game + player + "Wins";
     localStorage.setItem(key, wins);
 }
 
-function ResetScores(){
+function ResetWins(){
     RandomizeStartingPlayer();
     let wins = document.querySelectorAll(".win-count");
     wins.forEach(w => w.textContent = 0);
@@ -113,7 +113,7 @@ function ResetScores(){
 }
 
 winbuttons.forEach(button => {
-    GetScores(button);
+    GetWins(button);
     button.addEventListener("mousedown", () => {
         button.classList.add("active");
     });
@@ -144,14 +144,14 @@ winbuttons.forEach(button => {
 
 document.getElementById("reset-wins").addEventListener("click", () => {
     if(confirm("Are you sure you want to reset the current scores?")) {
-        ResetScores();
+        ResetWins();
     }
 });
 
 document.getElementById("log-wins").addEventListener("click", () => {
     if(confirm("Are you sure you want to log the current scores? This will reset the scores after logging.")) {
         SaveMatches(Games);
-        ResetScores();
+        ResetWins();
         openTab("Log");
     }
 });
