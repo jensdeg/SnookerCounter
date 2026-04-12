@@ -1,6 +1,4 @@
 ## TODO
- - track highest score reached (per person or just total) of snooker matches
-
  - See percentage increase/decrease of the players when saving scores
 
  - Change name of project, url etc to 'CueSports game tracker' (or better name)

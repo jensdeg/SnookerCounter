@@ -80,6 +80,14 @@ document.getElementById("Player2").addEventListener("input", (event) => {
     document.getElementById("player2-name").textContent = player2Name || "Player 2";
 });
 
+function UpdateHighScore(playername, score){
+    let key = playername + "snookerHighScore";
+    let currenthighscore = localStorage.getItem(key) || 0;
+    if(score > currenthighscore){
+        localStorage.setItem(key, score);
+    }
+}
+
 document.getElementById("End-Game").addEventListener("click", () => {
     if(!confirm("Are you sure you want to end the game?")) return;
 
@@ -91,6 +99,12 @@ document.getElementById("End-Game").addEventListener("click", () => {
 
     let player1WincountElement = document.getElementById("snooker-win-container").querySelector("#player1");
     let player2WincountElement = document.getElementById("snooker-win-container").querySelector("#player2");
+
+    let player1Name = localStorage.getItem("player1Name") || "";
+    let player2Name = localStorage.getItem("player2Name") || "";
+    UpdateHighScore(player1Name, player1score);
+    UpdateHighScore(player2Name, player2score);
+
 
     if (player1score > player2score){
         let currentWins = parseInt(player1WincountElement.textContent);
