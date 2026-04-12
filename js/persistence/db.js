@@ -131,8 +131,9 @@ function RenderMatches(matchup){
         let player1name = localStorage.getItem("player1Name") || "Player 1";
         let player2name = localStorage.getItem("player2Name") || "Player 2";
 
-        let player1Highscore = localStorage.getItem(player1name + "snookerHighScore") || 0;
-        let player2Highscore = localStorage.getItem(player2name + "snookerHighScore") || 0;
+        let player1Highscore = parseInt(localStorage.getItem(player1name + "snookerHighScore")) || 0;
+        let player2Highscore = parseInt(localStorage.getItem(player2name + "snookerHighScore")) || 0;
+        
 
         if(player1Highscore > player2Highscore){
             player1Highscore = `<u><b>${player1Highscore}</b></u>`;
@@ -145,34 +146,34 @@ function RenderMatches(matchup){
                     <div class="player-names">
                         <table cellspacing="0" cellpadding="0" width="100%" height="120%">
                             <tr>
-                                <td id="player1-name" style="width: 30%;"><b>${matchup.player1}</b></td>
-                                <td id="player1-score" style="width: 30%;"></td>
-                                <td id="player2-name" style="width: 30%;"><b>${matchup.player2}</b></td>
+                                <td style="width: 30%;"><b>${matchup.player1}</b></td>
+                                <td style="width: 30%;"></td>
+                                <td style="width: 30%;"><b>${matchup.player2}</b></td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;">${matchup.player1Score}</td>
-                                <td id="player1-score" style="width: 30%; opacity: 0.7; zoom: 0.8;">Total Wins</td>
-                                <td id="player2-score" style="width: 30%;">${matchup.player2Score}</td>
+                                <td style="width: 30%;">${matchup.player1Score}</td>
+                                <td style="width: 30%; opacity: 0.7; zoom: 0.8;">Total Wins</td>
+                                <td style="width: 30%;">${matchup.player2Score}</td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;">${player1Highscore}</td>
-                                <td id="player1-score" style="width: 30%; opacity: 0.7; zoom: 0.8;">Highest Score</td>
-                                <td id="player1-score" style="width: 30%;">${player2Highscore}</td>
+                                <td style="width: 30%;">${player1Highscore}</td>
+                                <td style="width: 30%; opacity: 0.7; zoom: 0.8;">Highest Score</td>
+                                <td style="width: 30%;">${player2Highscore}</td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
                             </tr>
                         </table>
                     </div>`;
@@ -182,24 +183,24 @@ function RenderMatches(matchup){
                     <div class="player-names">
                         <table cellspacing="0" cellpadding="0" width="100%" height="120%">
                             <tr>
-                                <td id="player1-name" style="width: 30%;"><b>${matchup.player1}</b></td>
-                                <td id="player1-score" style="width: 30%;"></td>
-                                <td id="player2-name" style="width: 30%;"><b>${matchup.player2}</b></td>
+                                <td style="width: 30%;"><b>${matchup.player1}</b></td>
+                                <td style="width: 30%;"></td>
+                                <td style="width: 30%;"><b>${matchup.player2}</b></td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;">${matchup.player1Score}</td>
-                                <td id="player1-score" style="width: 30%; opacity: 0.7; zoom: 0.8;">Total Wins</td>
-                                <td id="player2-score" style="width: 30%;">${matchup.player2Score}</td>
+                                <td style="width: 30%;">${matchup.player1Score}</td>
+                                <td style="width: 30%; opacity: 0.7; zoom: 0.8;">Total Wins</td>
+                                <td style="width: 30%;">${matchup.player2Score}</td>
                             </tr>
                             <tr>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
-                                <td id="player1-score" style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
+                                <td style="width: 30%;"><hr style="opacity:0.4;"></td>
                             </tr>
                         </table>
                     </div>`;

@@ -12,3 +12,5 @@
  - add helper page for snooker points (how many points left on table with certain balls)
 
  - custom popup for confirmations etc
+
+ - separate billiard tab

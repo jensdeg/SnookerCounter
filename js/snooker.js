@@ -123,4 +123,5 @@ document.getElementById("End-Game").addEventListener("click", () => {
     player1scoreElement.textContent = 0;
     player2scoreElement.textContent = 0;
     saveScores();
+    ToggleStartingPlayer();
 });
