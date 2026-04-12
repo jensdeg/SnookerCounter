@@ -13,4 +13,6 @@
 
  - custom popup for confirmations etc
 
+ - better place for name input field
+
  - separate billiard tab
