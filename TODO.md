@@ -16,3 +16,5 @@
  - better place for name input field
 
  - separate billiard tab
+
+ - difference in points in snooker tab
