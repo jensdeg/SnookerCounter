@@ -20,7 +20,7 @@ body{
 .score-window{
     background-color: lightgrey;
     padding: 10px;
-    margin: 5ch;
+    margin: 2ch;
     border-radius: 10px;
     border: 2px solid darkgray;
     width: 75%;
@@ -112,4 +112,26 @@ body{
     margin: 0 auto;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.snooker-divider{
+    display: flex;
+    width: 75%;
+    height: 50px;
+    justify-self: center;
+}
+
+.snooker-score-diff{
+    background-color: rgb(159, 159, 159);
+    border-radius: 10px;
+    text-align: center;
+    font-size: xx-large;
+    zoom: 1.2;
+}
+
+.snooker-score-diff::after{
+    zoom: 0.9;
+    content: attr(arrow);
+    position: relative;
+    right: -5px;
 }

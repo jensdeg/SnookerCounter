@@ -19,15 +19,41 @@ function updateScore(button) {
 }
 
 // score saving
-let player1Score = parseInt(localStorage.getItem("player1score")) || 0;
-let player2Score = parseInt(localStorage.getItem("player2score")) || 0;
+let player1Score = parseInt(localStorage.getItem("player1Score")) || 0;
+let player2Score = parseInt(localStorage.getItem("player2Score")) || 0;
 
 document.getElementById("Player1Score").textContent = player1Score;
 document.getElementById("Player2Score").textContent = player2Score;
 
+SetDifference();
+
 function saveScores() {
     localStorage.setItem("player1Score", document.getElementById("Player1Score").textContent);
     localStorage.setItem("player2Score", document.getElementById("Player2Score").textContent);
+    SetDifference();
+}
+
+function SetDifference(){
+    let player1Score = parseInt(localStorage.getItem("player1Score")) || 0;
+    let player2Score = parseInt(localStorage.getItem("player2Score")) || 0;
+
+    const differenceElement = document.getElementById("difference");
+
+    let difference = 0;
+
+    if(player1Score > player2Score){
+        difference = player1Score - player2Score
+        differenceElement.setAttribute("arrow", "↑")
+    }
+    else if (player2Score > player1Score){
+        difference = player2Score - player1Score
+        differenceElement.setAttribute("arrow", "↓")
+    }
+    else if (player1Score == player2Score){
+        differenceElement.setAttribute("arrow", "")
+    }
+
+    differenceElement.innerHTML = `<b>${difference}</b>`
 }
 
 buttons.forEach(button => {
