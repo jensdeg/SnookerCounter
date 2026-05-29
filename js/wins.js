@@ -100,6 +100,10 @@ function GetWins(button){
 function SaveWins(game, player, wins){
     let key = game + player + "Wins";
     localStorage.setItem(key, wins);
+    if(game == "Snooker"){
+        document.getElementById("Player1").value = localStorage.getItem("player1Name") + ` (${localStorage.getItem("Snookerplayer1Wins")})`
+        document.getElementById("Player2").value = localStorage.getItem("player2Name") + ` (${localStorage.getItem("Snookerplayer2Wins")})`
+    }
 }
 
 function ResetWins(){
