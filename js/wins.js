@@ -114,6 +114,8 @@ function ResetWins(){
         localStorage.setItem(game + "player1Wins", 0);
         localStorage.setItem(game + "player2Wins", 0);
     });
+    document.getElementById("Player1").value = localStorage.getItem("player1Name") + ` (0)`
+    document.getElementById("Player2").value = localStorage.getItem("player2Name") + ` (0)`
 }
 
 winbuttons.forEach(button => {
