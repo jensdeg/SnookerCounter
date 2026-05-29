@@ -16,3 +16,7 @@
  - better place for name input field
 
  - separate billiard tab
+
+ - settings
+     - configure playing schedule
+     - sound on/of
