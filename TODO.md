@@ -18,5 +18,5 @@
  - separate billiard tab
 
  - settings
-     - configure playing schedule
-     - sound on/of
+    - sound on/of
+    - better looking settings window

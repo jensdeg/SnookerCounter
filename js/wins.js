@@ -158,6 +158,7 @@ document.getElementById("log-wins").addEventListener("click", () => {
     if(confirm("Are you sure you want to log the current scores? This will reset the scores after logging.")) {
         SaveMatches(Games);
         ResetWins();
+        NextScheduleGames()
         openTab("Log");
     }
 });
